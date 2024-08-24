@@ -19,14 +19,14 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		$Head.rotate_y(-event.relative.x * mouse_sense)
 		$Head/Camera3D.rotate_x(-event.relative.y * mouse_sense)
-		$Head/Camera3D.rotation.x = clamp($Head/Camera3D.rotation.x, deg_to_rad(-75), deg_to_rad(60))
+		$Head/Camera3D.rotation.x = clamp($Head/Camera3D.rotation.x, deg_to_rad(-85), deg_to_rad(85))
 
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_pressed("jump") and is_on_floor():
 		velocity.y += JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
